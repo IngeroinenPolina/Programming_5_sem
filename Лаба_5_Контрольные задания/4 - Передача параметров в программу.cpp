@@ -8,13 +8,6 @@ using namespace std;
 
 int main(int argc, char* argv[])
 {
-	cout << "Введите количество аргументов: ";
-	cin >> argc;
-	for (int i = 0; i < argc; i++)
-	{
-		cin >> argv[i];
-	}
-
 	if (argc >= 4) 
 	{
 		if (strncmp(argv[1], "-a", 2) == 0) 
