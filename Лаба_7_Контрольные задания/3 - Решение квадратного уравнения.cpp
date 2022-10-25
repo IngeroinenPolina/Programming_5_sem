@@ -1,4 +1,4 @@
-﻿// 3 - Решение квадратного уравнения использование кортежа.cpp 
+﻿// 3 - Решение квадратного уравнения с использованием кортежа.cpp 
 
 #include <iostream>
 #include <tuple>
@@ -12,9 +12,10 @@ struct root
 	double x2;
 };
 
-tuple <bool, root> MyRoot(double a, double b, double c, bool& status) 
+tuple <bool, root> MyRoot(double a, double b, double c) 
 {
 	root myroots;
+	bool status = true;
 	double D = b * b - 4 * a * c;
 
 	if (D < 0)
@@ -37,10 +38,8 @@ int main()
 	cout << "Введите коэффициенты квадратного уравнения: ";
 	cin >> a >> b >> c;
 
-	bool status = true;
-
-	tuple <bool, root> result = MyRoot(a, b, c, status);
-	if (status == false)
+	tuple <bool, root> result = MyRoot(a, b, c);
+	if (get<0>(result) == false)
 	{
 		cout << "Корней нет.";
 	}
