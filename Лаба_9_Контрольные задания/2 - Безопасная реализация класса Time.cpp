@@ -38,7 +38,7 @@ public:
 
 	void ShowTime()
 	{
-		if (c_seconds > 60 || c_minutes > 60 || c_hours > 24)
+		if ((c_seconds > 60 || c_minutes > 60 || c_hours > 24) || (c_seconds < 0 || c_minutes < 0 || c_hours < 0))
 		{
 			throw SmsError();
 		}
@@ -69,7 +69,6 @@ int main()
 	Time t1(hours, minutes, seconds);
 	try
 	{
-		cout << "Правильный формат времени ";
 		t1.ShowTime();
 	}
 	catch (SmsError& error)
@@ -85,7 +84,6 @@ int main()
 	Time t2(hours, minutes, seconds);
 	try
 	{
-		cout << "Правильный формат времени ";
 		t2.ShowTime();
 	}
 	catch (SmsError& error)
@@ -98,16 +96,5 @@ int main()
 	Time t3;
 	t3.SlogTime(t1, t2);
 	cout << "\nСумма двух интервалов времени: ";
-	try
-	{
-		cout << "\nПравильный формат времени ";
-		t3.ShowTime();
-	}
-	catch (SmsError& error)
-	{
-		cout << "ОШИБКА: ";
-		error.printMessage();
-		return 1;
-	}
-	return 0;
+	t3.ShowTime();
 }
